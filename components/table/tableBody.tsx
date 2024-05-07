@@ -1,4 +1,6 @@
 import { Employee } from "@/consts/types";
+import Delete from "@/public/svg/Delete";
+import Edit from "@/public/svg/edit";
 import { ReactNode } from "react";
 
 interface EmployeesRow {
@@ -28,6 +30,16 @@ export default function TableBody({ employees }: EmployeesRow) {
           <DataCell>{employee.age}</DataCell>
           <DataCell>{employee.position}</DataCell>
           <DataCell>{employee.department}</DataCell>
+          <DataCell>
+            <div className="flex align-center justify-center gap-2">
+              <button className="border">
+                <Delete />
+              </button>
+              <button className="border">
+                <Edit />
+              </button>
+            </div>
+          </DataCell>
         </tr>
       ))}
     </tbody>

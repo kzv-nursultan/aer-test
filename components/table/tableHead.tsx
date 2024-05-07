@@ -1,18 +1,19 @@
-type EMPLOYEES_HEADER = ["name", "email", "age", "position", "department"];
+type EMPLOYEES_HEADER = ["name", "email", "age", "position", "department", "action"];
 const HEADER_TITLES: EMPLOYEES_HEADER = [
   "name",
   "email",
   "age",
   "position",
   "department",
+  "action",
 ];
 
 export default function TableHead() {
   return (
-    <thead>
+    <thead className="bg-gray-50">
       <tr>
         {HEADER_TITLES.map((title) => (
-          <th key={title} scope="col" className="px-6 py-3">
+          <th key={title} scope="col" className="px-6 py-3 capitalize">
             {title}
           </th>
         ))}
