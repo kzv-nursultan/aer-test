@@ -15,7 +15,7 @@ export default async function Home() {
   const employeesList = await getListOfEmployees();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main>
       <>
         {employeesList.map((employee) => (
           <p key={employee.id}>{employee.name}</p>
