@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="flex items-center justify-between px-6 py-8 bg-white border-b-4 border-indigo-600">
+    <header className="flex items-center justify-between px-6 py-8 bg-white border-b-2 border-indigo-600">
       <div className="flex items-center ml-auto">
         <div className="relative ml-auto">
           <button className="flex mx-4 text-gray-600 focus:outline-none">

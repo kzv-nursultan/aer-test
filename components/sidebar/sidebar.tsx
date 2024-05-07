@@ -30,10 +30,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="mt-10">
-        <a
-          className="flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25"
-          href="#"
-        >
+        <div className="flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25 cursor-pointer">
           <svg
             className="w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -54,9 +51,8 @@ export default function Sidebar() {
               d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
             ></path>
           </svg>
-
           <span className="mx-3">Dashboard</span>
-        </a>
+        </div>
       </nav>
     </div>
   );

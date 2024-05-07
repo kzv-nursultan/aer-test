@@ -22,7 +22,7 @@ export default function RootLayout({
           <Sidebar />
           <div className="w-full">
             <Header />
-            {children}
+            <main>{children}</main>
           </div>
         </div>
       </body>

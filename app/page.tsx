@@ -1,3 +1,5 @@
+import { TableHead } from "@/components";
+
 interface Employee {
   id: number;
   name: string;
@@ -15,12 +17,22 @@ export default async function Home() {
   const employeesList = await getListOfEmployees();
 
   return (
-    <main>
-      <>
-        {employeesList.map((employee) => (
-          <p key={employee.id}>{employee.name}</p>
-        ))}
-      </>
-    </main>
+    <div className="p-4">
+      <table className="border w-full">
+        <TableHead />
+        <tbody>
+          {employeesList.map((employee) => (
+            <tr key={employee.id}>
+              <td
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+              >
+                {employee.name}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
