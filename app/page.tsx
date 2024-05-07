@@ -1,8 +1,26 @@
+interface Employee {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  position: string;
+  department: string;
+}
 
-export default function Home() {
+const getListOfEmployees = async (): Promise<Employee[]> => {
+  const res = await fetch("http://localhost:3000/employees");
+  return res.json();
+};
+export default async function Home() {
+  const employeesList = await getListOfEmployees();
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     
+      <>
+        {employeesList.map((employee) => (
+          <p key={employee.id}>{employee.name}</p>
+        ))}
+      </>
     </main>
   );
 }
