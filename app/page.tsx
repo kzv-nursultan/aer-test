@@ -1,5 +1,5 @@
 import { TableBody, TableHead } from "@/components";
-import AddEmployee from "@/components/filters/addEmployee";
+import AddEmployee from "@/components/modals/addEmployee";
 import { Employee } from "@/constants/types";
 import { fetchData } from "@/utils/fetchData";
 

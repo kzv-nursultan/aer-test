@@ -1,8 +1,9 @@
 "use client";
 import { Modal } from "@/ui";
 import { useState } from "react";
-import { CreateEmployee } from "..";
 import { EmployeeFormFields } from "@/constants/types";
+import { fetchData } from "@/utils/fetchData";
+import { EmployeeHandler } from "..";
 
 const InitialNewEmployeeState: EmployeeFormFields = {
   name: "",
@@ -17,7 +18,15 @@ export default function AddEmployee() {
   const [newEmployee, setNewEmployee] = useState<EmployeeFormFields>(
     InitialNewEmployeeState
   );
-  const saveEmployee = () => console.log("employee added");
+  const saveEmployee = () =>
+    fetchData<void>({
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newEmployee),
+    });
+  
   return (
     <>
       <button
@@ -33,7 +42,7 @@ export default function AddEmployee() {
         title="Add employee"
         onConfirm={saveEmployee}
       >
-        <CreateEmployee
+        <EmployeeHandler
           employee={newEmployee}
           setNewEmployee={setNewEmployee}
         />

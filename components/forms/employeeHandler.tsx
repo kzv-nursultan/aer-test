@@ -1,20 +1,17 @@
 "use client";
 import { EmployeeFormFields } from "@/constants/types";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-interface CreateEmployeeProps {
+interface EmployeeHandlerProps {
   employee: EmployeeFormFields;
   setNewEmployee: Dispatch<SetStateAction<EmployeeFormFields>>;
 }
 
-
-
-export default function CreateEmployee({
+export default function EmployeeHandler({
   employee,
   setNewEmployee,
-}: CreateEmployeeProps) {
+}: EmployeeHandlerProps) {
   
-
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setNewEmployee((prev) => ({
