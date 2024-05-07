@@ -1,17 +1,16 @@
 import { TableBody, TableHead } from "@/components";
 import AddEmployee from "@/components/filters/addEmployee";
-import { Employee } from "@/consts/types";
+import { Employee } from "@/constants/types";
+import { fetchData } from "@/utils/fetchData";
 
-const getListOfEmployees = async (): Promise<Employee[]> => {
-  const res = await fetch("http://localhost:3000/employees");
-  return res.json();
-};
 export default async function Home() {
-  const employeesList = await getListOfEmployees();
+  const employeesList = await fetchData<Employee[]>();
 
   return (
     <div className="p-4">
-      <AddEmployee />
+      <div className="pb-4 flex">
+        <AddEmployee />
+      </div>
       <table className="border w-full">
         <TableHead />
         <TableBody employees={employeesList} />

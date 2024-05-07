@@ -6,3 +6,5 @@ export interface Employee {
   position: string;
   department: string;
 }
+
+export type EmployeeFormFields = Omit<Employee, "id">;

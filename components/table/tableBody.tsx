@@ -1,4 +1,4 @@
-import { Employee } from "@/consts/types";
+import { Employee } from "@/constants/types";
 import Delete from "@/public/svg/delete";
 import Edit from "@/public/svg/edit";
 import { ReactNode } from "react";
@@ -12,10 +12,7 @@ interface DataCellProps {
 }
 
 const DataCell = ({ children }: DataCellProps) => (
-  <td
-    scope="row"
-    className="px-6 py-4 font-medium text-gray-900 text-center"
-  >
+  <td scope="row" className="px-6 py-4 font-medium text-gray-900 text-center">
     {children}
   </td>
 );

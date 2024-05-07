@@ -1,5 +1,11 @@
-type EMPLOYEES_HEADER = ["name", "email", "age", "position", "department", "action"];
-const HEADER_TITLES: EMPLOYEES_HEADER = [
+import { Employee } from "@/constants/types";
+interface HeaderTitles extends Omit<Employee, "id"> {
+  action: string;
+}
+
+type TitlesUnion = keyof Omit<HeaderTitles, "id">;
+
+export const HEADER_TITLES: TitlesUnion[] = [
   "name",
   "email",
   "age",
@@ -7,6 +13,8 @@ const HEADER_TITLES: EMPLOYEES_HEADER = [
   "department",
   "action",
 ];
+
+
 
 export default function TableHead() {
   return (
