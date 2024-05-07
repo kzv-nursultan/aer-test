@@ -1,4 +1,5 @@
 import { TableBody, TableHead } from "@/components";
+import AddEmployee from "@/components/filters/addEmployee";
 import { Employee } from "@/consts/types";
 
 const getListOfEmployees = async (): Promise<Employee[]> => {
@@ -10,6 +11,7 @@ export default async function Home() {
 
   return (
     <div className="p-4">
+      <AddEmployee />
       <table className="border w-full">
         <TableHead />
         <TableBody employees={employeesList} />

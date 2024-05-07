@@ -1,5 +1,5 @@
 import { Employee } from "@/consts/types";
-import Delete from "@/public/svg/Delete";
+import Delete from "@/public/svg/delete";
 import Edit from "@/public/svg/edit";
 import { ReactNode } from "react";
 
