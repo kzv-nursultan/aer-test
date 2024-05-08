@@ -73,11 +73,17 @@ export default function SortingFilters() {
       </div>
 
       <div className="flex align-center gap-2">
-        <button className="border p-3 rounded" onClick={onSearchBtnClick}>
-          search
+        <button
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          onClick={onSearchBtnClick}
+        >
+          Search
         </button>
-        <button className="border p-3 rounded" onClick={onClearBtnClick}>
-          clear
+        <button
+          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-3 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          onClick={onClearBtnClick}
+        >
+          Clear
         </button>
       </div>
     </div>
