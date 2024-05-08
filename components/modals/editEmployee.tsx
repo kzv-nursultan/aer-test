@@ -4,7 +4,6 @@ import Edit from "@/public/svg/edit";
 import { Modal } from "@/ui";
 import { useState } from "react";
 import { EmployeeHandler } from "..";
-import { fetchData } from "@/utils/fetchData";
 import { useEditEmployeeMutation } from "@/lib/api/employeeApi";
 
 interface EditEmployeeProps {
