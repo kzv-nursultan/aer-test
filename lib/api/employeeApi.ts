@@ -79,15 +79,31 @@ export const employeesApi = createApi({
         }
       },
     }),
-    getEmployeesBySearch: build.query<
+    getEmployeesBySearch: build.mutation<
       Employee[],
-      { field: string; value: string }
+      { field: string; value: string } | undefined
     >({
-      query: ({ field, value }) => ({
+      query: (args) => ({
         url: "employees",
         method: "GET",
-        params: {},
+        params: args?.field && args?.value ? { [args.field]: args.value } : {},
       }),
+      async onQueryStarted(_, { queryFulfilled, dispatch }) {
+        try {
+          const { data: foundEmployees } = await queryFulfilled;
+          dispatch(
+            employeesApi.util.updateQueryData(
+              "getAllEmployees",
+              "",
+              (employeesList) => {
+                return (employeesList = foundEmployees);
+              }
+            )
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
   }),
 });
@@ -97,5 +113,5 @@ export const {
   useDeleteEmployeeMutation,
   useAddEmployeeMutation,
   useEditEmployeeMutation,
-  useGetEmployeesBySearchQuery,
+  useGetEmployeesBySearchMutation
 } = employeesApi;

@@ -1,10 +1,14 @@
 "use client";
 import { EMPLOYEE_FIELDS } from "@/constants/consts";
+import { useGetEmployeesBySearchMutation } from "@/lib/api/employeeApi";
 import { ChangeEvent, useMemo, useState } from "react";
+
+const initialFilterState = { field: "", value: "" };
 
 export default function SortingFilters() {
   const sortingFields = useMemo(() => Object.keys(EMPLOYEE_FIELDS), []);
-  const [filter, setFilter] = useState({ field: "", value: "" });
+  const [filter, setFilter] = useState(initialFilterState);
+  const [getEmployeesBySearch] = useGetEmployeesBySearchMutation();
 
   const selectChangeHandler = ({
     target,
@@ -16,7 +20,12 @@ export default function SortingFilters() {
   };
 
   const onSearchBtnClick = () => {
-    console.log(filter);
+    getEmployeesBySearch(filter);
+  };
+
+  const onClearBtnClick = () => {
+    setFilter(initialFilterState);
+    getEmployeesBySearch(undefined);
   };
 
   return (
@@ -30,7 +39,7 @@ export default function SortingFilters() {
             onChange={selectChangeHandler}
             value={filter.field}
           >
-            <option></option>
+            <option value="" disabled selected> Choose field</option>
             {sortingFields.map((field) => (
               <option key={field} className="capitalize">
                 {field}
@@ -60,9 +69,14 @@ export default function SortingFilters() {
           />
         </div>
       </div>
-      <button className="border px-2" onClick={onSearchBtnClick}>
-        search
-      </button>
+      <div className="flex align-center gap-2">
+        <button className="border px-2" onClick={onSearchBtnClick}>
+          search
+        </button>
+        <button className="border px-2" onClick={onClearBtnClick}>
+          clear
+        </button>
+      </div>
     </>
   );
 }
