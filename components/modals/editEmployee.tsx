@@ -2,7 +2,7 @@
 import { Employee, EmployeeFormFields } from "@/constants/types";
 import Edit from "@/public/svg/edit";
 import { Modal } from "@/ui";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { EmployeeHandler } from "..";
 import { useEditEmployeeMutation } from "@/lib/api/employeeApi";
 
@@ -18,6 +18,11 @@ export default function EditEmployee({ employee }: EditEmployeeProps) {
   });
   const [editEmployeeMutation, { isError, isLoading }] =
     useEditEmployeeMutation();
+  
+   const hasFormFilled = useMemo(() => {
+     const values = Object.values(dataToChange);
+     return values.includes("");
+   }, [dataToChange]);
 
   const openEditModal = () => setShowModal(true);
 
@@ -36,6 +41,7 @@ export default function EditEmployee({ employee }: EditEmployeeProps) {
         onConfirm={updateEmployeeInfo}
         isError={isError}
         isLoading={isLoading}
+        confirmDisabled={hasFormFilled}
       >
         <EmployeeHandler
           employee={dataToChange}

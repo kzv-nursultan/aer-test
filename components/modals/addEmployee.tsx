@@ -1,6 +1,6 @@
 "use client";
 import { Modal } from "@/ui";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { EmployeeFormFields } from "@/constants/types";
 import { EmployeeHandler } from "..";
 import { useAddEmployeeMutation } from "@/lib/api/employeeApi";
@@ -10,6 +10,11 @@ export default function AddEmployee() {
   const [showModal, setShowModal] = useState(false);
   const [newEmployee, setNewEmployee] =
     useState<EmployeeFormFields>(EMPLOYEE_FIELDS);
+
+  const hasFormFilled = useMemo(() => {
+    const values = Object.values(newEmployee);
+    return values.includes("");
+  }, [newEmployee]);
 
   const [addEmployeeMutation, { isLoading }] = useAddEmployeeMutation();
 
@@ -37,6 +42,7 @@ export default function AddEmployee() {
         title="Add employee"
         onConfirm={saveEmployee}
         isLoading={isLoading}
+        confirmDisabled={hasFormFilled}
       >
         <EmployeeHandler
           employee={newEmployee}
