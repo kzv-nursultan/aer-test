@@ -29,8 +29,8 @@ export default function SortingFilters() {
   };
 
   return (
-    <>
-      <div className="pr-3 mb-6 md:mb-0">
+    <div className="flex flex-col md:flex-row items-stretch gap-2">
+      <div className="flex w-full gap-2">
         <div className="relative w-auto">
           <select
             className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -39,7 +39,9 @@ export default function SortingFilters() {
             onChange={selectChangeHandler}
             value={filter.field}
           >
-            <option value="" disabled selected> Choose field</option>
+            <option value="" disabled defaultValue={""}>
+              Choose field
+            </option>
             {sortingFields.map((field) => (
               <option key={field} className="capitalize">
                 {field}
@@ -56,27 +58,28 @@ export default function SortingFilters() {
             </svg>
           </div>
         </div>
-      </div>
 
-      <div className="w-full md:w-1/3 pr-3 mb-6 md:mb-0">
-        <div className="relative">
-          <input
-            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            placeholder="type here"
-            name="value"
-            onChange={selectChangeHandler}
-            value={filter.value}
-          />
+        <div className="w-full">
+          <div className="relative">
+            <input
+              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              placeholder="type here"
+              name="value"
+              onChange={selectChangeHandler}
+              value={filter.value}
+            />
+          </div>
         </div>
       </div>
+
       <div className="flex align-center gap-2">
-        <button className="border px-2" onClick={onSearchBtnClick}>
+        <button className="border p-3 rounded" onClick={onSearchBtnClick}>
           search
         </button>
-        <button className="border px-2" onClick={onClearBtnClick}>
+        <button className="border p-3 rounded" onClick={onClearBtnClick}>
           clear
         </button>
       </div>
-    </>
+    </div>
   );
 }

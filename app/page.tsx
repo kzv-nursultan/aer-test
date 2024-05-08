@@ -6,14 +6,16 @@ import AddEmployee from "@/components/modals/addEmployee";
 export default function Home() {
   return (
     <div className="p-4">
-      <div className="flex align-center pb-4 w-full">
+      <div className="flex flex-col align-center pb-4 w-full gap-2 md:flex-row md:justify-between">
         <SortingFilters />
         <AddEmployee />
       </div>
-      <table className="border w-full">
-        <TableHead />
-        <TableBody />
-      </table>
+      <div className="overflow-x-auto">
+        <table className="border w-full whitespace-nowrap">
+          <TableHead />
+          <TableBody />
+        </table>
+      </div>
     </div>
   );
 }

@@ -86,7 +86,12 @@ export const employeesApi = createApi({
       query: (args) => ({
         url: "employees",
         method: "GET",
-        params: args?.field && args?.value ? { [args.field]: args.value } : {},
+        params:
+          args?.field && args?.value
+            ? { [args.field]: args.value }
+            : args?.value
+            ? { q: args?.value }
+            : {},
       }),
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
@@ -113,5 +118,5 @@ export const {
   useDeleteEmployeeMutation,
   useAddEmployeeMutation,
   useEditEmployeeMutation,
-  useGetEmployeesBySearchMutation
+  useGetEmployeesBySearchMutation,
 } = employeesApi;
