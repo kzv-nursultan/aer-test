@@ -3,11 +3,7 @@ import { Employee } from "@/constants/types";
 import { ReactNode } from "react";
 import EditEmployee from "../modals/editEmployee";
 import { DeleteEmployee } from "..";
-
-interface EmployeesRow {
-  employees: Employee[];
-  loadingData: boolean;
-}
+import { useGetAllEmployeesQuery } from "@/lib/api/employeeApi";
 
 interface DataCellProps {
   children: ReactNode;
@@ -27,14 +23,14 @@ const Loader = () => (
   </tr>
 );
 
-export default function TableBody({ employees, loadingData }: EmployeesRow) {
- 
+export default function TableBody() {
+ const { data: employeesList, isLoading } = useGetAllEmployeesQuery("");
   return (
     <tbody>
-      {loadingData ? (
+      {isLoading ? (
         <Loader />
       ) : (
-        employees.map((employee) => (
+        employeesList.map((employee: Employee) => (
           <tr key={employee.id}>
             <DataCell>{employee.name}</DataCell>
             <DataCell>{employee.email}</DataCell>

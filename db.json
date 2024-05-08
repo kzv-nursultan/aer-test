@@ -1,20 +1,28 @@
 {
   "employees": [
     {
-      "name": "john doe",
-      "email": "admin@gmail.com",
+      "name": "Казиев Нурсултан",
+      "email": "vetelib747@adroh.com",
       "age": 0,
       "position": "position",
       "department": "department",
-      "id": 2
+      "id": 6
     },
     {
       "name": "john doe",
+      "email": "musamer@yahoo.com",
+      "age": 0,
+      "position": "duke",
+      "department": "department",
+      "id": 7
+    },
+    {
+      "name": "john bobr",
       "email": "admin@gmail.com",
       "age": 0,
-      "position": "position",
-      "department": "department",
-      "id": 5
+      "position": "manage",
+      "department": "front",
+      "id": 8
     }
   ]
 }
