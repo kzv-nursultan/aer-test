@@ -1,68 +1,20 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "email": "email@email.com",
-      "age": 20,
-      "position": "manager",
-      "department": "front-end"
-    },
-    {
-      "id": 2,
-      "name": "John Johnson",
-      "email": "email@email.com",
-      "age": 20,
-      "position": "manager",
-      "department": "front-end"
-    },
-    {
       "name": "john doe",
-      "email": "vetelib747@adroh.com",
-      "age": "04",
+      "email": "admin@gmail.com",
+      "age": 0,
       "position": "position",
       "department": "department",
-      "id": 3
+      "id": 2
     },
     {
       "name": "john doe",
-      "email": "vetelib747@adroh.com",
-      "age": "04",
-      "position": "jfkd;ajs",
-      "department": "department",
-      "id": 4
-    },
-    {
-      "name": "john bobr",
-      "email": "musamer@yahoo.com",
+      "email": "admin@gmail.com",
       "age": 0,
       "position": "position",
       "department": "department",
       "id": 5
-    },
-    {
-      "name": "john bobr",
-      "email": "musamer@yahoo.com",
-      "age": 0,
-      "position": "position",
-      "department": "department",
-      "id": 6
-    },
-    {
-      "name": "name",
-      "email": "admin@gmail.com",
-      "age": 0,
-      "position": "position",
-      "department": "department",
-      "id": 7
-    },
-    {
-      "name": "Казиев Нурсултан",
-      "email": "admin@gmail.com",
-      "age": 0,
-      "position": "position",
-      "department": "department",
-      "id": 8
     }
   ]
 }

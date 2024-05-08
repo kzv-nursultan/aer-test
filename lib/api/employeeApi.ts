@@ -13,6 +13,22 @@ export const employeesApi = createApi({
         url: `employees/${id}`,
         method: "DELETE",
       }),
+      async onQueryStarted(idForDelete, { queryFulfilled, dispatch }) {
+        try {
+          await queryFulfilled;
+          dispatch(
+            employeesApi.util.updateQueryData(
+              "getAllEmployees",
+              "",
+              (draft: Employee[]) => {
+                return draft.filter((employee) => employee.id !== idForDelete);
+              }
+            )
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
     addEmployee: build.mutation<Employee, EmployeeFormFields>({
       query: (payload) => ({
@@ -27,9 +43,8 @@ export const employeesApi = createApi({
             employeesApi.util.updateQueryData(
               "getAllEmployees",
               "",
-              (draft) => {
-                console.log(draft);
-                draft?.push(newEmployee);
+              (employeesList) => {
+                employeesList?.push(newEmployee);
               }
             )
           );
@@ -41,9 +56,28 @@ export const employeesApi = createApi({
     editEmployee: build.mutation<void, Employee>({
       query: ({ id, ...rest }) => ({
         url: `employees/${id}`,
-        method: "PUT",
+        method: "PATCH",
         body: rest,
       }),
+      async onQueryStarted(args, { queryFulfilled, dispatch }) {
+        try {
+          const { data: updatedEmployee } = await queryFulfilled;
+          dispatch(
+            employeesApi.util.updateQueryData(
+              "getAllEmployees",
+              "",
+              (employeesList) => {
+                const index = employeesList.findIndex(
+                  (obj: Employee) => obj.id === args.id
+                );
+                employeesList[index] = updatedEmployee;
+              }
+            )
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
   }),
 });

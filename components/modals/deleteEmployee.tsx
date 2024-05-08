@@ -11,7 +11,7 @@ interface DeleteEmployeeProps {
 
 export default function DeleteEmployee({ id, name }: DeleteEmployeeProps) {
   const [showModal, setShowModal] = useState(false);
-  const [deleteEmployeeMutation, { isLoading, isError, isSuccess }] =
+  const [deleteEmployeeMutation, { isLoading, isError }] =
     useDeleteEmployeeMutation();
 
   const openDeleteModal = () => setShowModal(true);
