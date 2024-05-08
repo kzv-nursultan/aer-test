@@ -14,12 +14,29 @@ export const employeesApi = createApi({
         method: "DELETE",
       }),
     }),
-    addEmployee: build.mutation<void, EmployeeFormFields>({
+    addEmployee: build.mutation<Employee, EmployeeFormFields>({
       query: (payload) => ({
         url: "employees",
         method: "POST",
         body: payload,
       }),
+      async onQueryStarted(_, { queryFulfilled, dispatch }) {
+        try {
+          const { data: newEmployee } = await queryFulfilled;
+          dispatch(
+            employeesApi.util.updateQueryData(
+              "getAllEmployees",
+              "",
+              (draft) => {
+                console.log(draft);
+                draft?.push(newEmployee);
+              }
+            )
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
     editEmployee: build.mutation<void, Employee>({
       query: ({ id, ...rest }) => ({

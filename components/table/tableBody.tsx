@@ -1,6 +1,5 @@
+"use client"
 import { Employee } from "@/constants/types";
-import Delete from "@/public/svg/delete";
-import Edit from "@/public/svg/edit";
 import { ReactNode } from "react";
 import EditEmployee from "../modals/editEmployee";
 import { DeleteEmployee } from "..";
@@ -29,6 +28,7 @@ const Loader = () => (
 );
 
 export default function TableBody({ employees, loadingData }: EmployeesRow) {
+ 
   return (
     <tbody>
       {loadingData ? (

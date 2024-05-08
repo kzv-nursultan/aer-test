@@ -2,6 +2,9 @@
 import { TableBody, TableHead } from "@/components";
 import AddEmployee from "@/components/modals/addEmployee";
 import { useGetAllEmployeesQuery } from "@/lib/api/employeeApi";
+import { useAppDispatch } from "@/lib/hooks";
+import { setEmployeesList } from "@/lib/slices/employeeData";
+import { useEffect } from "react";
 
 export default function Home() {
   const { data: employeesList, isLoading } = useGetAllEmployeesQuery("");

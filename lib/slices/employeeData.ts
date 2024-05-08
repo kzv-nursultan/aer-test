@@ -12,5 +12,3 @@ export const EmployeeData = createSlice({
 });
 
 export const { setEmployeesList } = EmployeeData.actions;
-
-export default EmployeeData.reducer;

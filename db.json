@@ -33,20 +33,36 @@
       "id": 4
     },
     {
-      "name": "john doe",
-      "email": "vetelib747@adroh.com",
-      "age": "04",
-      "position": "jfkd;ajs",
+      "name": "john bobr",
+      "email": "musamer@yahoo.com",
+      "age": 0,
+      "position": "position",
       "department": "department",
       "id": 5
     },
     {
-      "name": "baron harkonen",
-      "email": "admin@gmail.com",
-      "age": "100",
-      "position": "duke",
+      "name": "john bobr",
+      "email": "musamer@yahoo.com",
+      "age": 0,
+      "position": "position",
       "department": "department",
       "id": 6
+    },
+    {
+      "name": "name",
+      "email": "admin@gmail.com",
+      "age": 0,
+      "position": "position",
+      "department": "department",
+      "id": 7
+    },
+    {
+      "name": "Казиев Нурсултан",
+      "email": "admin@gmail.com",
+      "age": 0,
+      "position": "position",
+      "department": "department",
+      "id": 8
     }
   ]
 }
