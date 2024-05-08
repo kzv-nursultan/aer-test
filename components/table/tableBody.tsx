@@ -1,9 +1,11 @@
 "use client";
 import { Employee } from "@/constants/types";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import EditEmployee from "../modals/editEmployee";
 import { DeleteEmployee } from "..";
 import { useGetAllEmployeesQuery } from "@/lib/api/employeeApi";
+import { CheckBox } from "@/ui";
+import { SelectedListContext } from "@/app/page";
 
 interface DataCellProps {
   children: ReactNode;
@@ -44,30 +46,31 @@ export default function TableBody() {
         <TableState text="No Data Found..." />
       </tbody>
     );
-  
-    return (
-      <tbody>
-        {isLoading ? (
-          <TableState text="Loading..." />
-        ) : (
-          employeesList.map((employee: Employee) => (
-            <tr key={employee.id}>
-              <DataCell styles="sticky left-0 h-fit text-black bg-slate-100">
-                {employee.name}
-              </DataCell>
-              <DataCell>{employee.email}</DataCell>
-              <DataCell>{employee.age}</DataCell>
-              <DataCell>{employee.position}</DataCell>
-              <DataCell>{employee.department}</DataCell>
-              <DataCell>
-                <div className="flex align-center justify-center gap-2">
-                  <DeleteEmployee id={employee.id} name={employee.name} />
-                  <EditEmployee employee={employee} />
-                </div>
-              </DataCell>
-            </tr>
-          ))
-        )}
-      </tbody>
-    );
+
+  return (
+    <tbody>
+      {isLoading ? (
+        <TableState text="Loading..." />
+      ) : (
+        employeesList.map((employee: Employee) => (
+          <tr key={employee.id}>
+            <DataCell styles="sticky left-0 h-fit text-black bg-slate-100">
+              {employee.name}
+            </DataCell>
+            <DataCell>{employee.email}</DataCell>
+            <DataCell>{employee.age}</DataCell>
+            <DataCell>{employee.position}</DataCell>
+            <DataCell>{employee.department}</DataCell>
+            <DataCell>
+              <div className="flex align-center justify-center gap-2">
+                <DeleteEmployee id={employee.id} name={employee.name} />
+                <EditEmployee employee={employee} />
+                <CheckBox id={employee.id} />
+              </div>
+            </DataCell>
+          </tr>
+        ))
+      )}
+    </tbody>
+  );
 }

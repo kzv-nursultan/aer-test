@@ -1,28 +1,3 @@
 {
-  "employees": [
-    {
-      "name": "john doe",
-      "email": "musamer@yahoo.com",
-      "age": "04",
-      "position": "duke",
-      "department": "department",
-      "id": 7
-    },
-    {
-      "name": "john sugar",
-      "email": "admin@gmail.com",
-      "age": 0,
-      "position": "manage",
-      "department": "front",
-      "id": 8
-    },
-    {
-      "name": "50 cent",
-      "email": "vetelib747@adroh.com",
-      "age": 0,
-      "position": "duke",
-      "department": "front",
-      "id": 9
-    }
-  ]
+  "employees": []
 }
