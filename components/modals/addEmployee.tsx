@@ -6,15 +6,21 @@ import { EmployeeHandler } from "..";
 import { useAddEmployeeMutation } from "@/lib/api/employeeApi";
 import { EMPLOYEE_FIELDS } from "@/constants/consts";
 
-
 export default function AddEmployee() {
   const [showModal, setShowModal] = useState(false);
   const [newEmployee, setNewEmployee] =
     useState<EmployeeFormFields>(EMPLOYEE_FIELDS);
-  
+
   const [addEmployeeMutation, { isLoading }] = useAddEmployeeMutation();
 
-  const saveEmployee = async () => await addEmployeeMutation(newEmployee);
+  const saveEmployee = async () => {
+    try {
+      await addEmployeeMutation(newEmployee);
+      setNewEmployee(EMPLOYEE_FIELDS);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>

@@ -3,6 +3,7 @@ import { TableBody, TableHead } from "@/components";
 import SortingFilters from "@/components/filters/sortingFilters";
 import AddEmployee from "@/components/modals/addEmployee";
 import { useDeleteEmployeeMutation } from "@/lib/api/employeeApi";
+import { Modal } from "@/ui";
 import { createContext, useCallback, useState } from "react";
 
 interface SelectedContext {
@@ -16,6 +17,7 @@ export const SelectedListContext = createContext<SelectedContext>({
 });
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
   const [selectedForDelete, setSelectedForDelete] = useState<number[]>([]);
   const [deleteEmployeeMutation, { isLoading, isError }] =
     useDeleteEmployeeMutation();
@@ -31,8 +33,15 @@ export default function Home() {
   }, []);
 
   const onDeleteSelectedClick = async () => {
-    await Promise.all(selectedForDelete.map((id) => deleteEmployeeMutation(id)));
-  }
+    try {
+      await Promise.all(
+      selectedForDelete.map((id) => deleteEmployeeMutation(id))
+    );
+    setSelectedForDelete([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="p-4">
@@ -50,12 +59,28 @@ export default function Home() {
           </table>
         </SelectedListContext.Provider>
         <button
-          className="p-3 border rounded mt-4"
+          className="sticky left-0 bg-gray-300 disabled:text-gray-200 disabled:hover:bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center mt-4 capitalize"
           disabled={selectedForDelete.length === 0}
-          onClick={onDeleteSelectedClick}
+          onClick={() => setShowModal(true)}
         >
           delete selected
         </button>
+        <Modal
+          show={showModal}
+          modalHandler={setShowModal}
+          title={"Delete selected"}
+          onConfirm={onDeleteSelectedClick}
+          confirmTitle="Delete"
+          isLoading={isLoading}
+          isError={isError}
+        >
+          <p className="text-lg">
+            Are you sure you want to delete selected Employees?
+          </p>
+          <p className="text-slate-500">
+            * all data will be permanently deleted
+          </p>
+        </Modal>
       </div>
     </div>
   );
