@@ -39,7 +39,7 @@ export default function AddEmployee() {
       <Modal
         show={showModal}
         modalHandler={setShowModal}
-        title="Add employee"
+        title="Create Employee"
         onConfirm={saveEmployee}
         isLoading={isLoading}
         confirmDisabled={hasFormFilled}
