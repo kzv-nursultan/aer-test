@@ -1,10 +1,10 @@
+"use client"
 import { TableBody, TableHead } from "@/components";
 import AddEmployee from "@/components/modals/addEmployee";
-import { Employee } from "@/constants/types";
-import { fetchData } from "@/utils/fetchData";
+import { useGetAllEmployeesQuery } from "@/lib/api/employeeApi";
 
-export default async function Home() {
-  const employeesList = await fetchData<Employee[]>();
+export default function Home() {
+  const { data: employeesList } = useGetAllEmployeesQuery("");
 
   return (
     <div className="p-4">
@@ -13,7 +13,7 @@ export default async function Home() {
       </div>
       <table className="border w-full">
         <TableHead />
-        <TableBody employees={employeesList} />
+        <TableBody employees={employeesList || []} />
       </table>
     </div>
   );

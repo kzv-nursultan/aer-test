@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header, Sidebar } from "@/components";
+import StoreProvider from "./storeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
           <Sidebar />
           <div className="w-full">
             <Header />
-            <main>{children}</main>
+            <main>
+              <StoreProvider>{children}</StoreProvider>
+            </main>
           </div>
         </div>
       </body>
