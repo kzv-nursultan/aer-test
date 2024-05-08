@@ -1,14 +1,6 @@
 {
   "employees": [
     {
-      "name": "Казиев Нурсултан",
-      "email": "vetelib747@adroh.com",
-      "age": 0,
-      "position": "position",
-      "department": "department",
-      "id": 6
-    },
-    {
       "name": "john doe",
       "email": "musamer@yahoo.com",
       "age": 0,

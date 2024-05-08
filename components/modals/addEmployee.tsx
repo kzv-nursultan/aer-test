@@ -4,20 +4,14 @@ import { useState } from "react";
 import { EmployeeFormFields } from "@/constants/types";
 import { EmployeeHandler } from "..";
 import { useAddEmployeeMutation } from "@/lib/api/employeeApi";
+import { EMPLOYEE_FIELDS } from "@/constants/consts";
 
-const InitialNewEmployeeState: EmployeeFormFields = {
-  name: "",
-  email: "",
-  age: 0,
-  position: "",
-  department: "",
-};
 
 export default function AddEmployee() {
   const [showModal, setShowModal] = useState(false);
-  const [newEmployee, setNewEmployee] = useState<EmployeeFormFields>(
-    InitialNewEmployeeState
-  );
+  const [newEmployee, setNewEmployee] =
+    useState<EmployeeFormFields>(EMPLOYEE_FIELDS);
+  
   const [addEmployeeMutation, { isLoading }] = useAddEmployeeMutation();
 
   const saveEmployee = async () => await addEmployeeMutation(newEmployee);
@@ -25,7 +19,7 @@ export default function AddEmployee() {
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm p-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm p-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ml-auto"
         type="button"
         onClick={() => setShowModal(true)}
       >

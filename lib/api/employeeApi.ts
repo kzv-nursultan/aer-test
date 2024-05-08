@@ -79,6 +79,16 @@ export const employeesApi = createApi({
         }
       },
     }),
+    getEmployeesBySearch: build.query<
+      Employee[],
+      { field: string; value: string }
+    >({
+      query: ({ field, value }) => ({
+        url: "employees",
+        method: "GET",
+        params: {},
+      }),
+    }),
   }),
 });
 
@@ -87,4 +97,5 @@ export const {
   useDeleteEmployeeMutation,
   useAddEmployeeMutation,
   useEditEmployeeMutation,
+  useGetEmployeesBySearchQuery,
 } = employeesApi;

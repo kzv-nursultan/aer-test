@@ -6,3 +6,4 @@ export { default as EmployeeHandler } from "./forms/employeeHandler";
 export { default as AddEmployee } from "./modals/addEmployee";
 export { default as EditEmployee } from "./modals/editEmployee";
 export { default as DeleteEmployee } from "./modals/deleteEmployee";
+export { default as sortingFilters } from "./filters/sortingFilters";
