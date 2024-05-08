@@ -5,6 +5,7 @@ import { Modal } from "@/ui";
 import { useState } from "react";
 import { EmployeeHandler } from "..";
 import { fetchData } from "@/utils/fetchData";
+import { useEditEmployeeMutation } from "@/lib/api/employeeApi";
 
 interface EditEmployeeProps {
   employee: Employee;
@@ -16,17 +17,13 @@ export default function EditEmployee({ employee }: EditEmployeeProps) {
     const { id, ...rest } = { ...employee };
     return rest;
   });
+  const [editEmployeeMutation, { isError, isLoading }] =
+    useEditEmployeeMutation();
 
   const openEditModal = () => setShowModal(true);
 
   const updateEmployeeInfo = async () =>
-    await fetchData<void>({
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataToChange),
-    }, `/${employee.id}`);
+    await editEmployeeMutation({ ...dataToChange, id: employee.id });
 
   return (
     <>
@@ -38,6 +35,8 @@ export default function EditEmployee({ employee }: EditEmployeeProps) {
         modalHandler={setShowModal}
         title={`Edit ${employee.name}`}
         onConfirm={updateEmployeeInfo}
+        isError={isError}
+        isLoading={isLoading}
       >
         <EmployeeHandler
           employee={dataToChange}

@@ -1,11 +1,8 @@
 "use client";
-import { Employee, EmployeeFormFields } from "@/constants/types";
-import Edit from "@/public/svg/edit";
 import { Modal } from "@/ui";
 import { useState } from "react";
-import { EmployeeHandler } from "..";
-import { fetchData } from "@/utils/fetchData";
 import Delete from "@/public/svg/delete";
+import { useDeleteEmployeeMutation } from "@/lib/api/employeeApi";
 
 interface DeleteEmployeeProps {
   id: number;
@@ -14,19 +11,14 @@ interface DeleteEmployeeProps {
 
 export default function DeleteEmployee({ id, name }: DeleteEmployeeProps) {
   const [showModal, setShowModal] = useState(false);
+  const [deleteEmployeeMutation, { isLoading, isError, isSuccess }] =
+    useDeleteEmployeeMutation();
 
   const openDeleteModal = () => setShowModal(true);
 
-  const deleteEmployee = async () =>
-    await fetchData<void>(
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-      `/${id}`
-    );
+  const deleteEmployee = async () => {
+    await deleteEmployeeMutation(id);
+  };
 
   return (
     <>
@@ -39,6 +31,8 @@ export default function DeleteEmployee({ id, name }: DeleteEmployeeProps) {
         title={"Delete data"}
         onConfirm={deleteEmployee}
         confirmTitle="Delete"
+        isLoading={isLoading}
+        isError={isError}
       >
         <p className="text-lg">Are you sure you want to delete: {name} ?</p>
         <p className="text-slate-500">* all data will be permanently deleted</p>

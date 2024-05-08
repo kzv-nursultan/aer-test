@@ -7,6 +7,7 @@ import { DeleteEmployee } from "..";
 
 interface EmployeesRow {
   employees: Employee[];
+  loadingData: boolean;
 }
 
 interface DataCellProps {
@@ -19,24 +20,36 @@ const DataCell = ({ children }: DataCellProps) => (
   </td>
 );
 
-export default function TableBody({ employees }: EmployeesRow) {
+const Loader = () => (
+  <tr>
+    <td className="text-center" colSpan={8}>
+      ...loading
+    </td>
+  </tr>
+);
+
+export default function TableBody({ employees, loadingData }: EmployeesRow) {
   return (
     <tbody>
-      {employees.map((employee) => (
-        <tr key={employee.id}>
-          <DataCell>{employee.name}</DataCell>
-          <DataCell>{employee.email}</DataCell>
-          <DataCell>{employee.age}</DataCell>
-          <DataCell>{employee.position}</DataCell>
-          <DataCell>{employee.department}</DataCell>
-          <DataCell>
-            <div className="flex align-center justify-center gap-2">
-              <DeleteEmployee id={ employee.id} name={employee.name} />
-              <EditEmployee employee={employee} />
-            </div>
-          </DataCell>
-        </tr>
-      ))}
+      {loadingData ? (
+        <Loader />
+      ) : (
+        employees.map((employee) => (
+          <tr key={employee.id}>
+            <DataCell>{employee.name}</DataCell>
+            <DataCell>{employee.email}</DataCell>
+            <DataCell>{employee.age}</DataCell>
+            <DataCell>{employee.position}</DataCell>
+            <DataCell>{employee.department}</DataCell>
+            <DataCell>
+              <div className="flex align-center justify-center gap-2">
+                <DeleteEmployee id={employee.id} name={employee.name} />
+                <EditEmployee employee={employee} />
+              </div>
+            </DataCell>
+          </tr>
+        ))
+      )}
     </tbody>
   );
 }

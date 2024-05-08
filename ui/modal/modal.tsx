@@ -1,3 +1,4 @@
+import Loading from "@/public/svg/loading";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
 interface ModalProps {
@@ -7,6 +8,8 @@ interface ModalProps {
   children: ReactNode;
   onConfirm: () => void;
   confirmTitle?: string;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
 export default function Modal({
@@ -16,6 +19,8 @@ export default function Modal({
   children,
   onConfirm,
   confirmTitle = "Save",
+  isLoading = false,
+  isError = false,
 }: ModalProps) {
   const closeModal = () => {
     modalHandler(false);
@@ -52,10 +57,12 @@ export default function Modal({
                   type="button"
                   onClick={() => {
                     onConfirm();
-                    closeModal();
+                    if (!isError && !isLoading) {
+                      closeModal();
+                    }
                   }}
                 >
-                  {confirmTitle}
+                  {isLoading ? <Loading /> : confirmTitle}
                 </button>
               </div>
             </div>

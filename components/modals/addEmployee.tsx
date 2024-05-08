@@ -2,8 +2,8 @@
 import { Modal } from "@/ui";
 import { useState } from "react";
 import { EmployeeFormFields } from "@/constants/types";
-import { fetchData } from "@/utils/fetchData";
 import { EmployeeHandler } from "..";
+import { useAddEmployeeMutation } from "@/lib/api/employeeApi";
 
 const InitialNewEmployeeState: EmployeeFormFields = {
   name: "",
@@ -18,15 +18,10 @@ export default function AddEmployee() {
   const [newEmployee, setNewEmployee] = useState<EmployeeFormFields>(
     InitialNewEmployeeState
   );
-  const saveEmployee = () =>
-    fetchData<void>({
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newEmployee),
-    });
-  
+  const [addEmployeeMutation, { isLoading }] = useAddEmployeeMutation();
+
+  const saveEmployee = async () => await addEmployeeMutation(newEmployee);
+
   return (
     <>
       <button
@@ -41,6 +36,7 @@ export default function AddEmployee() {
         modalHandler={setShowModal}
         title="Add employee"
         onConfirm={saveEmployee}
+        isLoading={isLoading}
       >
         <EmployeeHandler
           employee={newEmployee}
