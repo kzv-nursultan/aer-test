@@ -38,6 +38,7 @@ export default function SortingFilters() {
             name="field"
             onChange={selectChangeHandler}
             value={filter.field}
+            data-testid="filters-select"
           >
             <option value="" disabled defaultValue={""}>
               Choose field
