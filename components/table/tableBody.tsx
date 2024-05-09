@@ -45,7 +45,7 @@ export default function TableBody() {
       ) : (
         employeesList?.map((employee: Employee) => (
           <tr key={employee.id}>
-            <DataCell styles="sticky left-0 h-fit text-black bg-slate-100">
+            <DataCell styles="sticky left-0 h-fit text-black bg-slate-100 capitalize">
               {employee.name}
             </DataCell>
             <DataCell>{employee.email}</DataCell>

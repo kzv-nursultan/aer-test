@@ -3,18 +3,34 @@
     {
       "name": "john doe",
       "email": "vetelib747@adroh.com",
-      "age": 0,
-      "position": "duke",
+      "age": "30",
+      "position": "position",
       "department": "department",
       "id": 1
     },
     {
-      "name": "john bobr",
-      "email": "musamer@yahoo.com",
-      "age": 0,
-      "position": "duke",
+      "name": "joe black",
+      "email": "admin@gmail.com",
+      "age": "20",
+      "position": "position",
       "department": "department",
       "id": 2
+    },
+    {
+      "name": "Faiza Swanson",
+      "email": "fokel32377@chotunai.com",
+      "age": "20",
+      "position": "position",
+      "department": "department",
+      "id": 3
+    },
+    {
+      "name": "Mackenzie Rogers",
+      "email": "musamer@yahoo.com",
+      "age": "24",
+      "position": "position1",
+      "department": "department",
+      "id": 4
     }
   ]
 }
