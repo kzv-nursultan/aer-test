@@ -1,6 +1,6 @@
 "use client";
 import { Employee } from "@/constants/types";
-import { ReactNode, useContext } from "react";
+import { ReactNode } from "react";
 import EditEmployee from "../modals/editEmployee";
 import { DeleteEmployee } from "..";
 import { useGetAllEmployeesQuery } from "@/lib/api/employeeApi";
@@ -43,7 +43,7 @@ export default function TableBody() {
       {isLoading ? (
         <TableState text="Loading..." />
       ) : (
-        employeesList.map((employee: Employee) => (
+        employeesList?.map((employee: Employee) => (
           <tr key={employee.id}>
             <DataCell styles="sticky left-0 h-fit text-black bg-slate-100">
               {employee.name}

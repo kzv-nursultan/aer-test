@@ -46,7 +46,7 @@ export default function Table() {
       <SelectedListContext.Provider
         value={{ selectedForDelete, selectForDeleteHandler }}
       >
-        <table className="border w-full whitespace-nowrap">
+        <table data-testid="employees-table" className="border w-full whitespace-nowrap">
           <TableHead />
           <TableBody />
         </table>
