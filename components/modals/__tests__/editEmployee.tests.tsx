@@ -14,7 +14,6 @@ const mockEmployee = {
 };
 
 describe("test edit employee data modal", () => {
-  //beforeAll(() => render(mockTestProvider(<EditEmployee employee={mockEmployee} />)));
   it("should make sure that edit button exist", async () => {
     render(mockTestProvider(<EditEmployee employee={mockEmployee} />));
     const editButton = await screen.findByRole("button");
