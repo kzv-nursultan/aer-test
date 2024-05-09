@@ -7,3 +7,4 @@ export { default as AddEmployee } from "./modals/addEmployee";
 export { default as EditEmployee } from "./modals/editEmployee";
 export { default as DeleteEmployee } from "./modals/deleteEmployee";
 export { default as sortingFilters } from "./filters/sortingFilters";
+export { default as Table } from "./table/table";

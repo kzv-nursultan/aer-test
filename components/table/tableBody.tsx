@@ -5,7 +5,6 @@ import EditEmployee from "../modals/editEmployee";
 import { DeleteEmployee } from "..";
 import { useGetAllEmployeesQuery } from "@/lib/api/employeeApi";
 import { CheckBox } from "@/ui";
-import { SelectedListContext } from "@/app/page";
 
 interface DataCellProps {
   children: ReactNode;
@@ -19,14 +18,6 @@ const DataCell = ({ children, styles }: DataCellProps) => (
   >
     {children}
   </td>
-);
-
-const Loader = () => (
-  <tr>
-    <td className="text-center" colSpan={8} rowSpan={3}>
-      <p className="py-5">Loading...</p>
-    </td>
-  </tr>
 );
 
 const TableState = ({ text }: { text: string }) => (

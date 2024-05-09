@@ -1,4 +1,4 @@
-import { SelectedListContext } from "@/app/page";
+import { SelectedListContext } from "@/components/table/table";
 import { ChangeEvent, useContext, useMemo } from "react";
 
 interface CheckBoxProps {
